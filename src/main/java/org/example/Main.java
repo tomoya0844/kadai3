@@ -2,25 +2,33 @@ package org.example;
 
 import java.util.*;
 
+import java.util.Scanner;
+
 public class Main {
-
-
+    //public static void main(String[] args) {
+    //class JSample1_1 {
     public static void main(String[] args) {
 
-        Map<String, Integer> nameMap = new HashMap<>();
-        nameMap.put("田中", 10);
-        nameMap.put("佐藤", 21);
-        nameMap.put("中田", 62);
-        nameMap.put("久保", 5);
-        nameMap.put("波多野", 14);
-        nameMap.put("北山", 27);
-        nameMap.put("国枝", 19);
+        Map<String, Integer> nameToAge = new HashMap<>();
+        nameToAge.put("田中", 10);
+        nameToAge.put("佐藤", 21);
+        nameToAge.put("中田", 62);
+        nameToAge.put("久保", 5);
+        nameToAge.put("波多野", 14);
+        nameToAge.put("北山", 27);
+        nameToAge.put("国枝", 19);
+        //String targetName = "飯田";
+        Scanner scanner = new Scanner(System.in);
 
-        String targetName = "飯田";
+        System.out.println("名前を入力してください");
+        String targetName = scanner.nextLine();
+
+        System.out.println("名前は" + targetName + "です");
+
 
         int age = 0;
-        if (nameMap.containsKey(targetName)) {
-            age = nameMap.get(targetName);
+        if (nameToAge.containsKey(targetName)) {
+            age = nameToAge.get(targetName);
             if (age < 30) {
                 System.out.println(targetName + "は30歳未満です。");
                 if (age == 10) {
@@ -55,5 +63,6 @@ public class Main {
         }
     }
 }
+
 
 
