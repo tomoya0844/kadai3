@@ -20,42 +20,42 @@ public class Main {
         //String targetName = "飯田";
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("名前を入力してください");
+        System.out.println("-名前を入力してください-");
         String targetName = scanner.nextLine();
 
-        System.out.println("名前は" + targetName + "です");
+        System.out.println(targetName + "様を検索します");
 
 
-        int age = 0;
+        int age;
         if (nameToAge.containsKey(targetName)) {
             age = nameToAge.get(targetName);
             if (age < 30) {
-                System.out.println(targetName + "は30歳未満です。");
+                System.out.println(targetName + "様は30歳未満です。");
                 if (age == 10) {
-                    System.out.println("正しくは" + targetName + "は10歳です。");
+                    System.out.println("正しくは" + targetName + "様は10歳です。");
                 }
                 if (age == 19) {
-                    System.out.println("正しくは" + targetName + "は19歳です。");
+                    System.out.println("正しくは" + targetName + "様は19歳です。");
                 }
                 if (age == 5) {
-                    System.out.println("正しくは" + targetName + "は5歳です。");
+                    System.out.println("正しくは" + targetName + "様は5歳です。");
                 }
                 if (age == 27) {
-                    System.out.println("正しくは" + targetName + "は27歳です。");
+                    System.out.println("正しくは" + targetName + "様は27歳です。");
                 }
                 if (age == 21) {
-                    System.out.println("正しくは" + targetName + "は21歳です。");
+                    System.out.println("正しくは" + targetName + "様は21歳です。");
                 }
 
                 if (age == 14) {
-                    System.out.println("正しくは" + targetName + "は14歳です。");
+                    System.out.println("正しくは" + targetName + "様は14歳です。");
                 }
 
             } else {
-                System.out.println(targetName + "は30歳以上です。");
+                System.out.println(targetName + "様は30歳以上です。");
 
                 if (age == 62) {
-                    System.out.println("正しくは" + targetName + "は62歳です。");
+                    System.out.println("正しくは" + targetName + "様は62歳です。");
                 }
             }
         } else {
