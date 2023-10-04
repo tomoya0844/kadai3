@@ -17,29 +17,14 @@ public class Main {
         nameToAge.put("国枝", 19);
 
         Scanner scanner = new Scanner(System.in);
- 
         System.out.println("-文字を入力してください-");
         String input = scanner.nextLine();
-
-        Integer targetAge = null;
-        String targetName = null;
-        if (isInteger(input)) {
-            targetName = input;
-            System.out.println(targetAge + "歳の方を検索します");
-        } else {
+        try {
+            int intValue = Integer.parseInt(input);
+            System.out.println(input + "歳の方を検索します");
+        } catch (NumberFormatException e) {
             System.out.println(input + "様を検索します");
-            try {
-                Integer.parseInt(input);
-            } catch (NumberFormatException e) {
-                return;
-                Map<String, Integer> nameToAge = new HashMap<>();
-                nameToAge.put("田中", 10);
-                nameToAge.put("佐藤", 21);
-                nameToAge.put("中田", 62);
-                nameToAge.put("久保", 5);
-                nameToAge.put("波多野", 14);
-                nameToAge.put("北山", 27);
-                nameToAge.put("国枝", 19);
+            if (nameToAge.containsKey(input)) {
                 int age;
                 if (nameToAge.containsKey(input)) {
                     age = nameToAge.get(input);
@@ -75,17 +60,8 @@ public class Main {
                 } else {
                     System.out.println("-お探しの人物は見つかりませんでした。-");
                 }
-
-
-                //      private static boolean equals (Integer targetAge){
-                //          return false;
-                // return false;
             }
         }
-    }
-
-    private static boolean isInteger(String input) {
-        return false;
     }
 }
 
