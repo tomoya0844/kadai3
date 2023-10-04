@@ -1,12 +1,11 @@
 package org.example;
 
-import java.util.*;
-
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         Map<String, Integer> nameToAge = new HashMap<>();
         nameToAge.put("田中", 10);
         nameToAge.put("佐藤", 21);
@@ -15,62 +14,55 @@ public class Main {
         nameToAge.put("波多野", 14);
         nameToAge.put("北山", 27);
         nameToAge.put("国枝", 19);
-
         Scanner scanner = new Scanner(System.in);
-        System.out.println("-文字を入力してください-");
-        String input = scanner.nextLine();
-        try {
-            int intValue = Integer.parseInt(input);
-            System.out.println(input + "歳の方を検索します");
-        } catch (NumberFormatException e) {
-            System.out.println(input + "様を検索します");
-            if (nameToAge.containsKey(input)) {
-                int age;
-                if (nameToAge.containsKey(input)) {
-                    age = nameToAge.get(input);
-                    if (age < 30) {
-                        System.out.println(input + "様は30歳未満です。");
-                        if (age == 10) {
-                            System.out.println("正しくは" + input + "様は10歳です。");
-                        }
-                        if (age == 19) {
-                            System.out.println("正しくは" + input + "様は19歳です。");
-                        }
-                        if (age == 5) {
-                            System.out.println("正しくは" + input + "様は5歳です。");
-                        }
-                        if (age == 27) {
-                            System.out.println("正しくは" + input + "様は27歳です。");
-                        }
-                        if (age == 21) {
-                            System.out.println("正しくは" + input + "様は21歳です。");
-                        }
 
-                        if (age == 14) {
-                            System.out.println("正しくは" + input + "様は14歳です。");
-                        }
+        while (true) {
+            System.out.println("1. 名前を入力して年齢を取得");
+            System.out.println("2. 年齢を入力して名前を取得");
+            System.out.println("3. 終了");
+            System.out.print("選択肢を入力してください: ");
 
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // 改行を消費
+
+            switch (choice) {
+                case 1:
+                    System.out.print("名前を入力してください: ");
+                    String name = scanner.nextLine();
+                    if (nameToAge.containsKey(name)) {
+                        int age = nameToAge.get(name);
+                        System.out.println(name + "さんは" + age + "歳です。");
                     } else {
-                        System.out.println(input + "様は30歳以上です。");
-
-                        if (age == 62) {
-                            System.out.println("正しくは" + input + "様は62歳です。");
-                        }
+                        System.out.println("申し訳ありません。" + name + "さんの情報はありません。");
                     }
-                } else {
-                    System.out.println("-お探しの人物は見つかりませんでした。-");
-                }
+                    break;
+                case 2:
+                    System.out.print("年齢を入力してください: ");
+                    int age = scanner.nextInt();
+                    scanner.nextLine(); // 改行を消費
+                    String foundName = findNameByAge(nameToAge, age);
+                    if (foundName != null) {
+                        System.out.println(age + "歳の方の名前は" + foundName + "さんです。");
+                    } else {
+                        System.out.println("申し訳ありません。" + age + "歳の方の情報はありません。");
+                    }
+                    break;
+                case 3:
+                    System.out.println("プログラムを終了します。");
+                    scanner.close();
+                    System.exit(0);
+                default:
+                    System.out.println("無効な選択肢です。再試行してください。");
             }
         }
     }
+
+    private static String findNameByAge(Map<String, Integer> map, int targetAge) {
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == targetAge) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
 }
-
-
-
-
-
-
-
-
-
-
